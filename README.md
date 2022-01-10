@@ -6,6 +6,6 @@ The basis for the solidity contract is from the [full warrant canary contract](h
 
 # How to Deploy
 
-These contracts are meant to be used via an online editor like [Remix](http://remix.ethereum.org/) for the solidity contract and [Starknet Playground](https://starknet.io/playground/i) for the Cairo contract.
+These contracts are meant to be used via an online editor like [Remix](http://remix.ethereum.org/) for the solidity contract and [Starknet Playground](https://starknet.io/playground) for the Cairo contract.
 
 Copy the content of these contracts into the respective online editor and compile/deploy.

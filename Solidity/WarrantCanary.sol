@@ -53,7 +53,6 @@ contract WarrantCanary {
     /// @param warrantCanaryID_: ID (uint) of the warrant canary whose expiration time should be changed.
     /// @param newExpirationTime_: The time (unix epoch in seconds) when the warrant canary expires.
     function updateExpiration(uint warrantCanaryID_, uint newExpirationTime_) public {
-        uint oldExpirationTime = warrantCanaries[warrantCanaryID_].expirationTime;
         warrantCanaries[warrantCanaryID_].expirationTime= newExpirationTime_;
         updateLastUpdatedInBlock(warrantCanaryID_);
     }

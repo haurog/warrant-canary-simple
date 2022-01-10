@@ -19,9 +19,6 @@ contract WarrantCanary {
     mapping(uint => warrantCanary) public  warrantCanaries;  // All warrant canaries accessed by IDs.
     mapping(address => uint[]) public IDsOwned;  // Store all warrant canaries that an address owns.
 
-    event LogCreated(uint warrantCanaryID, string purpose);
-    event LogExpirationUpdated(uint warrantCanaryID, uint oldExpirationTime, uint newExpirationTime);
-    event LogDeleted(uint warrantCanaryID);
 
     modifier onlyCanaryOwner(uint warrantCanaryID) {
         require(msg.sender == warrantCanaries[warrantCanaryID].warrantCanaryOwner,
@@ -48,9 +45,6 @@ contract WarrantCanary {
         });
 
         IDsOwned[msg.sender].push(IDcount);
-
-        emit LogCreated(IDcount, purpose_);
-
         IDcount++;
 
     }
@@ -62,7 +56,6 @@ contract WarrantCanary {
         uint oldExpirationTime = warrantCanaries[warrantCanaryID_].expirationTime;
         warrantCanaries[warrantCanaryID_].expirationTime= newExpirationTime_;
         updateLastUpdatedInBlock(warrantCanaryID_);
-        emit LogExpirationUpdated(warrantCanaryID_, oldExpirationTime, newExpirationTime_);
     }
 
     /// @notice Delete a given warrant canary.
@@ -76,8 +69,6 @@ contract WarrantCanary {
         IDsOwned[wcOwner] = removeByValue(IDsOwned[wcOwner], warrantCanaryID_);
 
         delete warrantCanaries[warrantCanaryID_];
-
-        emit LogDeleted(warrantCanaryID_);
     }
 
     /// @notice Updates the variable "lastUpdatedInBlock" in the warrant canary.

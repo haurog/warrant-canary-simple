@@ -1,8 +1,16 @@
 %lang starknet
 %builtins range_check
 
+struct warrantCanary:
+    member ID : felt
+    member expirationTime : felt
+    member lastUpdatedInBlock : felt
+    member purpose : felt
+    member warrantCanaryOwner : felt
+end
+
 @storage_var
-func warrantCanaries(id : felt) -> (warrantCanary : felt):
+func warrantCanaries(id : felt) -> (warrantCanary : warrantCanary):
 end
 
 @storage_var
